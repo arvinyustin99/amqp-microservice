@@ -1,0 +1,15 @@
+{
+	"name": "amqp-microservice",
+	"version": "1.0.0",
+	"description": "providing microservice with AMQP method",
+	"author": "arvinyustin99",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"express": "^4.16.1",
+		"mariadb": "^2.4.0",
+		"amqplib": "^0.5.6"
+	}
+}
