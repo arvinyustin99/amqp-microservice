@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"express": "^4.16.1",
-		"mariadb": "^2.4.0",
+		"mysql": "^2.18.1",
 		"amqplib": "^0.5.6"
 	}
 }

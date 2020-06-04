@@ -1,0 +1,40 @@
+version: '3.5'
+services:
+  rabbitmq:
+    container_name: rabbitmq-docker
+    image: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - amqp-network
+  publisher:
+    container_name: amqp-publisher
+    restart: on-failure
+    build: ./publisher
+    links:
+      - "rabbitmq"
+    depends_on:
+      - "rabbitmq"
+    ports:
+      - "2000:2000"
+    networks:
+      - amqp-network
+  consumer:
+    container_name: amqp-consumer
+    restart: on-failure
+    build: ./consumer
+    links:
+      - "rabbitmq"
+    depends_on:
+      - "rabbitmq"
+    networks:
+      - amqp-network
+  db:
+    build: ./db
+    networks:
+      - amqp-network
+networks:
+  amqp-network:
+    name: amqp-network-latihan
+    driver: bridge
